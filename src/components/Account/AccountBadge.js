@@ -41,14 +41,14 @@ export const AccountBadge = () => {
       <Popup
         trigger={
           <div
-            className="border-solid flex items-center border-2 border-yellow-700
+            className="flex items-center border-solid  border-2 border-yellow-700
           bg-black bg-opacity-50"
           >
             <div className="px-2 py-1">
               <svg
                 className="fill-white"
-                width="40"
-                height="40"
+                width="30"
+                height="30"
                 viewBox="0 0 647 647"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -67,7 +67,10 @@ export const AccountBadge = () => {
         closeOnEscape
       >
         {(close) => (
-          <div className="transition-all fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-80 h-32 border-white border-solid border-2 bg-black z-10">
+          <div
+            className="transition-all fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-80 h-32 border-solid  border-2 border-yellow-700
+          bg-black bg-opacity-50 z-10"
+          >
             <div className=" items-stretch flex flex-col">
               <div className="flex justify-center">
                 <h1 className="flex font-normal font-custom text-zinc-400 text-2xl py-4">
@@ -99,9 +102,12 @@ export const AccountBadge = () => {
   } else {
     const text = "Connect Wallet";
     return (
-      <div className="border-white hover:border-orange-200 text-center border-solid border-2">
+      <div
+        className="border-solid flex items-center border-2 border-yellow-700
+          bg-black bg-opacity-50"
+      >
         <span
-          className="pr-2 font-normal text-white hover:text-orange-200 text-sm sm:text-lg"
+          className="px-2 text-white font-extralight font-sansserif hover:text-white text-xl"
           onClick={() => authenticate()}
         >
           {text}
