@@ -19,7 +19,7 @@ module.exports = {
       "7xl": "5rem",
     },
     fontFamily: {
-      sansserif: ["Koulen", "sans-serif"],
+      sansserif: ["Josefin", "sans-serif"],
       custom: ["Koulen", "monospace"],
     },
   },

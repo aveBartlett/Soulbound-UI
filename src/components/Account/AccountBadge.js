@@ -4,7 +4,6 @@ import Popup from "reactjs-popup";
 import { isChainIdValid } from "../../util/NetworkUtil";
 import { updateAccountDetails } from "../../util/AccountUtil";
 import { MainContext } from "../../context/Provider";
-import { JOE_TOKEN_LIST_URL } from "../../util/Constants";
 
 export const AccountBadge = () => {
   const { authenticate, isAuthenticated, logout, user, chainId } = useMoralis();
@@ -15,14 +14,8 @@ export const AccountBadge = () => {
     logout();
   };
 
-  //fetch most updated tokenList
   useEffect(async () => {
-    fetch(JOE_TOKEN_LIST_URL)
-      .then((res) => res.json())
-      .then((out) => context.setJoeTokenList(out.tokens));
-  }, []);
-
-  useEffect(async () => {
+    console.log(isAuthenticated);
     if (isAuthenticated && isChainIdValid(chainId)) {
       const accountAddress = user.get("ethAddress");
       await updateAccountDetails(web3Api, context, accountAddress, chainId);
@@ -41,7 +34,7 @@ export const AccountBadge = () => {
       <Popup
         trigger={
           <div
-            className="flex items-center border-solid  border-2 border-yellow-700
+            className="flex items-center border-solid  border-2 border-white rounded-lg
           bg-black bg-opacity-50"
           >
             <div className="px-2 py-1">
@@ -59,7 +52,7 @@ export const AccountBadge = () => {
                 />
               </svg>
             </div>
-            <span className="pr-2  text-white font-extralight font-sansserif hover:text-white text-xl">
+            <span className="pr-2  text-white font-extralight font-custom hover:text-white text-xl">
               {text}
             </span>
           </div>
@@ -67,32 +60,34 @@ export const AccountBadge = () => {
         closeOnEscape
       >
         {(close) => (
-          <div
-            className="transition-all fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-80 h-32 border-solid  border-2 border-yellow-700
+          <div className="fixed top-0 bottom-0 left-0 right-0 z-50 backdrop-blur-sm">
+            <div
+              className="transition-all fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-80 h-32 border-solid  border-2 border-white rounded-lg
           bg-black bg-opacity-50 z-10"
-          >
-            <div className=" items-stretch flex flex-col">
-              <div className="flex justify-center">
-                <h1 className="flex font-normal font-custom text-zinc-400 text-2xl py-4">
-                  logout of metamask?
-                </h1>
-              </div>
+            >
+              <div className=" items-stretch flex flex-col">
+                <div className="flex justify-center">
+                  <h1 className="flex font-normal font-custom text-white text-2xl py-4">
+                    logout of metamask?
+                  </h1>
+                </div>
 
-              <div className="grid grid-cols-2 py-3">
-                <button
-                  onClick={() => close()}
-                  className="font-normal font-custom text-white hover:text-orange-200 text-lg"
-                >
-                  cancel
-                </button>
-                <button
-                  onClick={() => {
-                    logoutMoralis();
-                  }}
-                  className="font-normal font-custom text-white hover:text-orange-200 text-lg"
-                >
-                  confirm
-                </button>
+                <div className="grid grid-cols-2 py-3">
+                  <button
+                    onClick={() => close()}
+                    className="font-normal font-custom text-white hover:text-orange-200 text-lg"
+                  >
+                    cancel
+                  </button>
+                  <button
+                    onClick={() => {
+                      logoutMoralis();
+                    }}
+                    className="font-normal font-custom text-white hover:text-orange-200 text-lg"
+                  >
+                    confirm
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -102,16 +97,41 @@ export const AccountBadge = () => {
   } else {
     const text = "Connect Wallet";
     return (
-      <div
-        className="border-solid flex items-center border-2 border-yellow-700
+      <div>
+        <div
+          className="flex items-center border-solid  border-2 border-white rounded-lg
           bg-black bg-opacity-50"
-      >
-        <span
-          className="px-2 text-white font-extralight font-sansserif hover:text-white text-xl"
-          onClick={() => authenticate()}
         >
-          {text}
-        </span>
+          <span
+            className="px-2 text-white font-extralight font-sansserif hover:text-white text-xl"
+            onClick={() => authenticate()}
+          >
+            {text}
+          </span>
+        </div>
+        <div className="fixed top-0 bottom-0 left-0 right-0 z-50 backdrop-blur-sm">
+          <div
+            className="transition-all fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-80 h-32 border-solid  border-2 border-white rounded-lg
+          bg-black bg-opacity-50 z-10"
+          >
+            <div className=" items-stretch flex flex-col">
+              <div className="flex justify-center">
+                <h1 className="flex font-normal font-custom text-white text-2xl py-4">
+                  Please connect your wallet
+                </h1>
+              </div>
+
+              <div className="flex justify-center">
+                <button
+                  onClick={() => authenticate()}
+                  className="font-normal font-custom text-white hover:text-orange-200 text-lg"
+                >
+                  Connect
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       // position="center center"
     );

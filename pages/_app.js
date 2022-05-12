@@ -3,8 +3,8 @@ import { MoralisProvider } from "react-moralis";
 import MainProvider from "../src/context/Provider";
 import Head from "next/head";
 
-const APP_ID = "4fnErG17uYipvjOZkzVjwjySCJGJYpFGjAwAWBTz";
-const SERVER_URL = "https://cs23appumvpf.usemoralis.com:2053/server";
+const APP_ID = "gfz8jdvD2mrP8tSb6GmaPFVKEKWxcWafPsN5IsBO";
+const SERVER_URL = "https://bdzksvclam7m.usemoralis.com:2053/server";
 
 function MyApp({ Component, pageProps }) {
   return (

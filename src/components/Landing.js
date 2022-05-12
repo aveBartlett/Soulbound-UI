@@ -1,18 +1,42 @@
-import React, { useContext } from "react";
-import { MainContext } from "../context/Provider";
-import { useMoralis } from "react-moralis";
-import Link from "next/link";
+import React from "react";
+import Image from "next/image";
+import battlenet_logo from "../../public/battlenet_logo.png";
 
 export default function Landing() {
-  const { isAuthenticated } = useMoralis();
-
   return (
     <div className="flex-col flex-grow flex items-center justify-center">
-      {!isAuthenticated ? (
-        <p1 className="font-light text-white text-lg font-custom"></p1>
-      ) : (
-        <div />
-      )}
+      <div className="w-1/2 h-1/2 min-w-fit max-w-lg items-center justify-center">
+        <div
+          className=" flex-col flex-grow flex items-center justify-center w-full h-full 
+        border-4 bg-gradient-to-t from-gray-800 to-black border-white rounded-xl"
+        >
+          <div className="flex items-center pr-2">
+            <Image
+              src={battlenet_logo}
+              alt="battle.net logo"
+              width={70}
+              height={70}
+            />
+          </div>
+          <h1 className="font-normal font-custom text-white text-2xl pb-7">
+            Mint your WoW character as an NFT.
+          </h1>
+          <div
+            className="flex items-center border-solid  border-2 border-white rounded-lg
+           bg-gradient-to-t from-purple-800 to-black  hover:from-purple-500"
+          >
+            <button
+              className="px-5 text-white font-extralight font-custom text-xl"
+              onClick={() => {}}
+            >
+              Connect your Battle.net account
+            </button>
+          </div>
+          <p className="font-normal font-sansserrif text-white text-sm pt-2">
+            We will only use this to access character read data
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

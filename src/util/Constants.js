@@ -61,9 +61,6 @@ export const networks = [
 
 export const SECONDS_IN_YEAR = 60 * 60 * 24 * 365;
 
-export const JOE_TOKEN_LIST_URL =
-  "https://raw.githubusercontent.com/traderjoe-xyz/joe-tokenlists/main/joe.tokenlist.json";
-
 export const MORALIS_MAINNET_RPC =
   "https://speedy-nodes-nyc.moralis.io/543b50e7bb5ca4f50c9df822/avalanche/mainnet";
 

@@ -8,7 +8,6 @@ class MainProvider extends React.Component {
     main: {
       network: AVALANCHE_MAINNET_PARAMS,
       accountDetails: {},
-      joeTokenList: {},
     },
   };
 
@@ -30,15 +29,6 @@ class MainProvider extends React.Component {
               main: {
                 ...prevState.main,
                 accountDetails,
-              },
-            }));
-          },
-
-          setJoeTokenList: (joeTokenList) => {
-            this.setState((prevState) => ({
-              main: {
-                ...prevState.main,
-                joeTokenList,
               },
             }));
           },
