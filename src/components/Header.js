@@ -10,9 +10,7 @@ export default function Header() {
         <BattleNetAccount />
       </div>
       <Title />
-      <div className="fixed top-2 right-5">
-        <WalletAccount />
-      </div>
+      <div className="fixed top-2 right-5">{/* <WalletAccount /> */}</div>
     </div>
   );
 }

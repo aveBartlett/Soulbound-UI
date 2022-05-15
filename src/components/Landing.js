@@ -1,10 +1,16 @@
 import React from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
+import CharacterDisplayList from "./WoW/CharacterDisplayList";
 
 export default function Landing() {
   const { data: session } = useSession();
 
   if (session) {
+    return (
+      <div className="flex-col flex-grow flex items-center justify-center">
+        <CharacterDisplayList />
+      </div>
+    );
   } else {
     return (
       <div className="flex-col flex-grow flex items-center justify-center">

@@ -2,9 +2,11 @@ import React from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import battlenet_logo from "../../../public/battlenet_logo.png";
 import Image from "next/image";
+import Popup from "reactjs-popup";
 
 export default function BattleNetAccount() {
   const { data: session } = useSession();
+  console.log(session);
 
   if (session) {
     return (
@@ -19,8 +21,8 @@ export default function BattleNetAccount() {
                 height={40}
               />
             </div>
-            <span className="px-2  text-white font-extralight font-custom hover:text-white text-2xl">
-              {session.user}
+            <span className="px-2  text-white font-extralight font-custom hover:text-white text-xl">
+              {session.user.name}
             </span>
           </div>
         }
