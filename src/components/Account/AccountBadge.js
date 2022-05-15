@@ -4,6 +4,8 @@ import Popup from "reactjs-popup";
 import { isChainIdValid } from "../../util/NetworkUtil";
 import { updateAccountDetails } from "../../util/AccountUtil";
 import { MainContext } from "../../context/Provider";
+import metamask from "../../../public/metamask.png";
+import Image from "next/image";
 
 export const AccountBadge = () => {
   const { authenticate, isAuthenticated, logout, user, chainId } = useMoralis();
@@ -15,7 +17,6 @@ export const AccountBadge = () => {
   };
 
   useEffect(async () => {
-    console.log(isAuthenticated);
     if (isAuthenticated && isChainIdValid(chainId)) {
       const accountAddress = user.get("ethAddress");
       await updateAccountDetails(web3Api, context, accountAddress, chainId);
@@ -111,20 +112,29 @@ export const AccountBadge = () => {
         </div>
         <div className="fixed top-0 bottom-0 left-0 right-0 z-50 backdrop-blur-sm">
           <div
-            className="transition-all fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-80 h-32 border-solid  border-2 border-white rounded-lg
-          bg-black bg-opacity-50 z-10"
+            className="transition-all fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-80 h-44 border-solid  border-2 border-white rounded-lg
+          bg-black bg-opacity-50 z-10 items-center flex justify-center"
           >
-            <div className=" items-stretch flex flex-col">
+            <div className="items-center flex flex-col justify-center">
               <div className="flex justify-center">
-                <h1 className="flex font-normal font-custom text-white text-2xl py-4">
+                <h1 className="flex font-normal font-custom text-white text-2xl">
                   Please connect your wallet
                 </h1>
               </div>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center flex-col items-center">
+                <div>
+                  <Image
+                    src={metamask}
+                    alt="metamask logo"
+                    width={80}
+                    height={60}
+                  />
+                </div>
+
                 <button
                   onClick={() => authenticate()}
-                  className="font-normal font-custom text-white hover:text-orange-200 text-lg"
+                  className="font-normal font-custom text-white hover:text-orange-200 text-xl"
                 >
                   Connect
                 </button>

@@ -8,4 +8,11 @@ module.exports = {
   images: {
     domains: ["source.unsplash.com"],
   },
+  env: {
+    moralisApiKey: process.env.moralisApiKey,
+    moralisApiSecret: process.env.moralisApiSecret,
+    BATTLENET_CLIENT_ID: process.env.BATTLENET_CLIENT_ID,
+    BATTLENET_CLIENT_SECRET: process.env.BATTLENET_CLIENT_SECRET,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+  },
 };
