@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import Popup from "reactjs-popup";
 import { isChainIdValid } from "../../util/NetworkUtil";
-import { updateAccountDetails } from "../../util/AccountUtil";
+import { updateAccountDetails } from "../../util/WalletUtil";
 import { MainContext } from "../../context/Provider";
 import metamask from "../../../public/metamask.png";
 import Image from "next/image";

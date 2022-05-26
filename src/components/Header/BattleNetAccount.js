@@ -21,9 +21,9 @@ export default function BattleNetAccount() {
                 height={40}
               />
             </div>
-            <span className="px-2  text-white font-extralight font-custom hover:text-white text-xl">
+            <button className="px-2  text-white font-extralight font-custom hover:text-orange-200 text-xl">
               {session.user.name}
-            </span>
+            </button>
           </div>
         }
         closeOnEscape
@@ -74,12 +74,12 @@ export default function BattleNetAccount() {
           height={40}
         />
       </div>
-      <span
-        className="px-2  text-white font-extralight font-custom hover:text-white text-2xl"
+      <button
+        className="px-2  text-white font-extralight font-custom hover:text-orange-200 text-xl"
         onClick={() => signIn("battlenet")}
       >
         Sign in
-      </span>
+      </button>
     </div>
   );
 }
